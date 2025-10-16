@@ -5,5 +5,8 @@ public class Main {
 
         System.out.printf("hello guys");
         System.out.println("Fuuuuuu");
+
+        System.out.println("hello niggers");
+
     }
 }

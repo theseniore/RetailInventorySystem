@@ -54,7 +54,7 @@ public class ProductDatabase implements Databases <Product>{
     {
         for(Product rec: this.records)
         {
-            if(rec.getSearchKey() == key)
+            if(rec.getSearchKey().equals(key))
                 return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class ProductDatabase implements Databases <Product>{
     {
         for(Product rec: this.records)
         {
-            if(rec.getSearchKey() == key)
+            if(rec.getSearchKey().equals(key))
                 return rec;
         }
         return null;

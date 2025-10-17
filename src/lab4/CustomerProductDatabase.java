@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
-public class CustomerProductDatabase {
+public class CustomerProductDatabase implements Databases <CustomerProduct> {
     private ArrayList<CustomerProduct> records;
     private String filename;
     public CustomerProductDatabase (String filename)
@@ -55,7 +55,7 @@ public class CustomerProductDatabase {
     {
         for(CustomerProduct rec: this.records)
         {
-            if(rec.getSearchKey() == key)
+            if(rec.getSearchKey().equals(key))
                 return true;
         }
         return false;
@@ -64,11 +64,12 @@ public class CustomerProductDatabase {
     {
         for(CustomerProduct rec: this.records)
         {
-            if(rec.getSearchKey() == key)
+            if(rec.getSearchKey().equals(key))
                 return rec;
         }
         return null;
     }
+
     public void insertRecord(CustomerProduct record)
     {
         this.records.add(record);

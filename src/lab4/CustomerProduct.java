@@ -32,10 +32,10 @@ public class CustomerProduct {
         this.paid = paid;
     }
     public String lineRepresentation(){
-        StringBuilder Date = new StringBuilder(purchaseDate.toString());
-        Date.reverse();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return customerSSN+","+productID+","+Date+","+paid;
+        String date = this.purchaseDate.toString();
+        String[] d = date.split("-");
+        date = d[2]+"-"+d[1]+"-"+d[0];
+        return customerSSN+","+productID+","+date;
     }
 
     public String getSearchKey(){

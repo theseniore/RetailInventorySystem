@@ -8,7 +8,6 @@ public class Menu {
         System.out.println("Welcome to retail managment system!");
         System.out.println("For Admins enter 1\nFor employees enter 2\nTo exit enter 3");
         Scanner in = new Scanner(System.in);
-        co
         // switch case for admin and employees
         Scanner in = new Scanner(System.in);
         int choice = in.nextInt();

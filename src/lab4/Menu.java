@@ -8,10 +8,15 @@ public class Menu {
         System.out.println("Welcome to retail managment system!");
         System.out.println("For Admins enter 1\nFor employees enter 2\nTo exit enter 3");
         Scanner in = new Scanner(System.in);
-        // switch case for admin and employees
-        Scanner in = new Scanner(System.in);
-        int choice = in.nextInt();
-        switch(choice)
+        int n=0;
+        while (true){
+            System.out.println("enter an integer");
+        if (in.hasNextInt()){
+n=in.nextInt();
+break;
+        }
+        }
+        switch(n)
         {
             case 1:
                 adminMenu();

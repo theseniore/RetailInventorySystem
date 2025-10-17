@@ -29,7 +29,7 @@ public void readFromFile(){
 
     }
     catch (IOException e){
-        System.out.printf("this file cannot be opened\n");
+        System.out.println("this file cannot be opened!");
         return;
     }
 }
@@ -40,9 +40,9 @@ public void readFromFile(){
         String employeeId=data[0];
         String Name = data[1];
         String Email = data[2];
-        String Adress = data[3];
+        String Address = data[3];
         String PhoneNumber = data[4];
-        e = new EmployeeUser(employeeId,Name,Email,Adress,PhoneNumber);
+        e = new EmployeeUser(employeeId,Name,Email,Address,PhoneNumber);
         return e;
     }
     public ArrayList<EmployeeUser> returnAllRecords(){

@@ -4,20 +4,20 @@ public class EmployeeUser {
     private String Name;
     private String employeeId;
     private String Email;
-    private String Adress;
+    private String Address;
     private String PhoneNumber;
 
 
 
-    public EmployeeUser(String employeeId, String name, String email, String address, String phoneNumber){
+    public EmployeeUser(String employeeId, String name, String email, String Address, String phoneNumber){
         this.employeeId = employeeId;
         this.Name = name;
         this.Email = email;
-        this.Adress = address;
+        this.Address = Address;
         this.PhoneNumber = phoneNumber;
     }
     public String lineRepresentation(){
-        return employeeId+","+Name+","+Email+","+Adress+","+PhoneNumber;
+        return employeeId+","+Name+","+Email+","+Address+","+PhoneNumber;
     }
     public String getSearchKey(){
         return employeeId;
@@ -49,11 +49,11 @@ public class EmployeeUser {
     }
 
     public String getAdress() {
-        return Adress;
+        return Address;
     }
 
     public void setAdress(String adress) {
-        Adress = adress;
+        Address = adress;
     }
 
     public String getPhoneNumber() {

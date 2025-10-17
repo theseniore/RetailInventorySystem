@@ -24,12 +24,12 @@ public class EmployeeRole {
         }
     }
 
-    public ArrayList<Product> getListOfProducts() {
-        return productsDatabase.returnAllRecords();
+    public Product[] getListOfProducts() {
+        return productsDatabase.returnAllRecords().toArray(new Product[0]);
     }
 
-    public ArrayList<CustomerProduct> getListOfPurchasingOperations() {
-        return customerProductDatabase.returnAllRecords();
+    public CustomerProduct[] getListOfPurchasingOperations() {
+        return customerProductDatabase.returnAllRecords().toArray(new CustomerProduct[0]);
     }
 
     public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate) {

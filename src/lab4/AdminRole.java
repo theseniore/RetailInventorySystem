@@ -17,8 +17,10 @@ public class AdminRole {
         }
     }
 
-    public ArrayList<EmployeeUser> getListOfEmployees() {
-        return database.returnAllRecords();
+    public EmployeeUser[] getListOfEmployees() {
+
+        return database.returnAllRecords().toArray(new EmployeeUser[0]);
+
     }
 
     public void removeEmployee(String key) {

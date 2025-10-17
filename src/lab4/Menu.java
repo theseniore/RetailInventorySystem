@@ -1,12 +1,16 @@
 package lab4;
 
+import java.util.Scanner;
+
 public class Menu {
     public static void mainMenu()
     {
         System.out.println("Welcome to retail managment system!");
         System.out.println("For Admins enter 1\nFor employees enter 2\nTo exit enter 3");
         // switch case for admin and employees
-        switch()
+        Scanner in = new Scanner(System.in);
+        int choice = in.nextInt();
+        switch(choice)
         {
             case 1:
                 adminMenu();

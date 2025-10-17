@@ -3,12 +3,13 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-public class ProductDatabase {
+public class ProductDatabase implements Databases <Product>{
     private ArrayList<Product> records;
     private String filename;
     public ProductDatabase (String filename)
     {
         this.filename = filename;
+        this.records = new ArrayList<>();
     }
     public void readFromFile()
     {
@@ -47,7 +48,7 @@ public class ProductDatabase {
     }
     public ArrayList<Product> returnAllRecords()
     {
-        return this.records==null?null:this.records;
+        return this.records==null?new ArrayList<>():this.records;
     }
     public boolean contains(String key )
     {

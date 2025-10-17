@@ -10,6 +10,7 @@ public class CustomerProductDatabase {
     public CustomerProductDatabase (String filename)
     {
         this.filename = filename;
+        this.records = new ArrayList<>();
     }
     public void readFromFile()
     {

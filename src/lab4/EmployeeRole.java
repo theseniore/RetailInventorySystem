@@ -17,10 +17,10 @@ public class EmployeeRole {
     }
 
     public void addProduct(String productID, String productName, String manufacturerName,
-                           String supplierName, int quantity) {
+                           String supplierName, int quantity,float price) {
         if (!productsDatabase.contains(productID)) {
             Product newProduct = new Product(productID, productName, manufacturerName,
-                    supplierName, quantity, 0.0f);
+                    supplierName, quantity, price);
             productsDatabase.insertRecord(newProduct);
             productsDatabase.saveToFile();
         }

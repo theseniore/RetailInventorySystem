@@ -157,6 +157,7 @@ public class Menu {
                     case 1:
                         String productID, productName, manufacturerName, supplierName;
                         int quantity;
+                        float price;
 
                         do {
                             System.out.print("enter product ID: ");
@@ -186,11 +187,16 @@ public class Menu {
                             System.out.print("enter quantity: ");
                             quantity = Integer.parseInt(sc.nextLine());
                             if (!Validations.quantityValid(quantity))
-                                System.out.println("Invalid quantity must be >=0.");
+                                System.out.println("Invalid quantity must be greater than or equals 0 !");
                         } while (!Validations.quantityValid(quantity));
-
-                        employee.addProduct(productID, productName, manufacturerName, supplierName, quantity);
-                        System.out.println("product added successfully");
+                        do {
+                            System.out.print("enter the price: ");
+                            price = Float.parseFloat(sc.nextLine());
+                            if (!Validations.priceValidation(price))
+                                System.out.println("Invalid price must be greater than or equals 0 !");
+                        } while (!Validations.priceValidation(price));
+                        employee.addProduct(productID, productName, manufacturerName, supplierName, quantity,price);
+                        System.out.println("product added successfully!");
                         break;
 
                     case 2:

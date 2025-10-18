@@ -17,4 +17,5 @@ public class Validations {
     public static boolean quantityValid(int quantity){
         return quantity>=0;
     }
+    public static boolean priceValidation(float price) { return price>=0.0; }
 }

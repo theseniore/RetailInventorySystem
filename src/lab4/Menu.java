@@ -1,5 +1,6 @@
 package lab4;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Menu {
@@ -133,7 +134,127 @@ public class Menu {
     }
 
     public static void employeeMenu()
-    {
+    { boolean exit = false;
+        EmployeeRole employee = new EmployeeRole();
+        Scanner sc = new Scanner(System.in);
+
+        while (!exit) {
+            System.out.println("===========================");
+            System.out.println("welcome to Employee Menu");
+            System.out.println("===========================");
+            System.out.println("1. add Product");
+            System.out.println("2. list of Products");
+            System.out.println("3. purchase Product");
+            System.out.println("4. return Product");
+            System.out.println("5. apply Payment");
+            System.out.println("6. log out");
+            System.out.println("===========================");
+            System.out.print("enter your choice: ");
+
+            try {
+                String choice = sc.nextLine();
+                switch (Integer.parseInt(choice)) {
+                    case 1:
+                        String productID, productName, manufacturerName, supplierName;
+                        int quantity;
+
+                        do {
+                            System.out.print("enter product ID: ");
+                            productID = sc.nextLine();
+                            if (productID.isEmpty()) System.out.println("Invalid ID try again.");
+                        } while (productID.isEmpty());
+
+                        do {
+                            System.out.print("enter product name: ");
+                            productName = sc.nextLine();
+                            if (productName.isEmpty()) System.out.println("Invalid name try again.");
+                        } while (productName.isEmpty());
+
+                        do {
+                            System.out.print("enter manufacturer name: ");
+                            manufacturerName = sc.nextLine();
+                            if (manufacturerName.isEmpty()) System.out.println("Invalid name try again.");
+                        } while (manufacturerName.isEmpty());
+
+                        do {
+                            System.out.print("enter supplier name: ");
+                            supplierName = sc.nextLine();
+                            if (supplierName.isEmpty()) System.out.println("Invalid name try again.");
+                        } while (supplierName.isEmpty());
+
+                        do {
+                            System.out.print("enter quantity: ");
+                            quantity = Integer.parseInt(sc.nextLine());
+                            if (!Validations.quantityValid(quantity))
+                                System.out.println("Invalid quantity must be >=0.");
+                        } while (!Validations.quantityValid(quantity));
+
+                        employee.addProduct(productID, productName, manufacturerName, supplierName, quantity);
+                        System.out.println("product added successfully");
+                        break;
+
+                    case 2:
+                        Product[] products = employee.getListOfProducts();
+                        System.out.println("list of Products:");
+                        for (Product p : products) {
+                            System.out.println(p.lineRepresentation());
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print("enter customer SSN: ");
+                        String customerSSN = sc.nextLine();
+                        System.out.print("enter product ID to purchase: ");
+                        String purchaseProductID = sc.nextLine();
+                        LocalDate purchaseDate = LocalDate.now();
+
+                        boolean purchased = employee.purchaseProduct(customerSSN, purchaseProductID, purchaseDate);
+                        if (purchased)
+                            System.out.println("product purchased successfully!");
+                        else
+                            System.out.println("product not available or invalid ID.");
+                        break;
+
+                    case 4:
+                        System.out.print("enter customer SSN: ");
+                        String returnSSN = sc.nextLine();
+                        System.out.print("enter product ID to return: ");
+                        String returnProductID = sc.nextLine();
+                        LocalDate purchaseDateReturn = LocalDate.now();
+                        LocalDate returnDate = LocalDate.now();
+
+                        double refunded = employee.returnProduct(returnSSN, returnProductID, purchaseDateReturn, returnDate);
+                        if (refunded >= 0)
+                            System.out.println("product returned successfully Refund: " + refunded);
+                        else
+                            System.out.println("Invalid return (check date or product).");
+                        break;
+
+                    case 5:
+                        System.out.print("enter customer SSN: ");
+                        String paySSN = sc.nextLine();
+                        LocalDate payDate = LocalDate.now();
+
+                        boolean paid = employee.applyPayment(paySSN, payDate);
+                        if (paid)
+                            System.out.println("Payment applied successfully!");
+                        else
+                            System.out.println("No unpaid record found for this customer.");
+                        break;
+
+                    case 6:
+                        exit = true;
+                        employee.logout();
+                        System.out.println("Logged out from Employee Menu.");
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input please enter a number.");
+            }
+        }
 
     }
 

@@ -26,6 +26,7 @@ public class ProductDatabase implements Databases <Product>{
                 products.add(p);
             }
             this.records = products;
+            r.close();
         }
         catch(IOException e)
         {
@@ -89,6 +90,7 @@ public class ProductDatabase implements Databases <Product>{
                 w.write(line);
                 w.newLine();
             }
+            w.close();
         }
         catch(IOException e)
         {

@@ -27,7 +27,9 @@ public class CustomerProductDatabase implements Databases <CustomerProduct> {
                 products.add(p);
             }
             this.records = products;
+            r.close();
         }
+
         catch(IOException e)
         {
             System.out.println("The file cannot be opened!");
@@ -91,6 +93,7 @@ public class CustomerProductDatabase implements Databases <CustomerProduct> {
                 w.write(line);
                 w.newLine();
             }
+            w.close();
         }
         catch(IOException e)
         {

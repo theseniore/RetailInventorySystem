@@ -11,7 +11,9 @@ public class EmployeeRole {
 
     public EmployeeRole() {
         this.productsDatabase = new ProductDatabase("Products.txt");
+        this.productsDatabase.readFromFile();
         this.customerProductDatabase = new CustomerProductDatabase("CustomersProducts.txt");
+        this.customerProductDatabase.readFromFile();
     }
 
     public void addProduct(String productID, String productName, String manufacturerName,

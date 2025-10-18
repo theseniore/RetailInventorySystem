@@ -6,7 +6,7 @@ public class Validations {
         return email != null && email.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$");
     }
     public static boolean phoneValid(String phone){
-        return phone != null && phone.matches("\\d{10}");
+        return phone != null && phone.matches("\\d{11}");
     }
     public static boolean ssnValid(String ssn){
         return ssn != null && ssn.matches("\\d{14}");

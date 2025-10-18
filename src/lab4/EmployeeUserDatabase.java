@@ -26,6 +26,7 @@ public void readFromFile(){
             employeeUsers.add(e);
         }
         this.records = employeeUsers;
+        r.close();
 
     }
     catch (IOException e){
@@ -82,6 +83,7 @@ public void deleteRecord(String key){
                 w.write(line);
                 w.newLine();
             }
+            w.close();
         }
         catch(IOException e)
         {

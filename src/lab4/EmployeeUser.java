@@ -48,12 +48,12 @@ public class EmployeeUser {
         Email = email;
     }
 
-    public String getAdress() {
+    public String getAddress() {
         return Address;
     }
 
-    public void setAdress(String adress) {
-        Address = adress;
+    public void setAddress(String address) {
+        Address = address;
     }
 
     public String getPhoneNumber() {

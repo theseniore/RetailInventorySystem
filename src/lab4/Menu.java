@@ -27,7 +27,7 @@ public class Menu {
             case 2: employeeMenu();
             break;
             case 3: Exsit=true;
-                System.out.println("Exting:");
+                System.out.println("Exiting:");
             break;
             default:
                 System.out.println("invalid number try again");

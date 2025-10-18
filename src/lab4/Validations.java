@@ -2,6 +2,8 @@ package lab4;
 
 public class Validations {
 
+
+
     public static boolean emailValid(String email){
         return email != null && email.matches("^[\\w.-]+@[\\w.-]+\\.\\w+$");
     }
@@ -18,4 +20,12 @@ public class Validations {
         return quantity>=0;
     }
     public static boolean priceValidation(float price) { return price>=0.0; }
+
+    public static boolean existID(String ID){
+        EmployeeUserDatabase t=new EmployeeUserDatabase("Employees.txt");
+        t.readFromFile();
+
+        return t.contains(ID);
+    }
 }
+

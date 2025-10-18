@@ -96,7 +96,7 @@ public class Menu {
                         } while (!Validations.phoneValid(phone));
 
                         admin.addEmployee(id, name, email, address, phone);
-                        System.out.println("Employee added successfully!");
+
                         break;
 
                     case 2:
@@ -114,7 +114,7 @@ public class Menu {
                             System.out.println("No employees to remove.");
                         } else {
                             admin.removeEmployee(removeId);
-                            System.out.println("employee removed successfully");
+
                         }
                         break;
 
@@ -137,6 +137,22 @@ public class Menu {
     { boolean exit = false;
         EmployeeRole employee = new EmployeeRole();
         Scanner sc = new Scanner(System.in);
+        String id;
+        while (true){
+            do {
+                System.out.print("enter employee ID: ");
+                id = sc.nextLine();
+                if (id.isEmpty()) System.out.println("Invalid ID try again.");
+            } while (id.isEmpty());
+            if(!Validations.existID(id))
+            {
+                System.out.println("Invalid ID try again.");
+            }else{
+                break;
+            }
+
+        }
+
 
         while (!exit) {
             System.out.println("===========================");
@@ -196,7 +212,7 @@ public class Menu {
                                 System.out.println("Invalid price must be greater than or equals 0 !");
                         } while (!Validations.priceValidation(price));
                         employee.addProduct(productID, productName, manufacturerName, supplierName, quantity,price);
-                        System.out.println("product added successfully!");
+
                         break;
 
                     case 2:

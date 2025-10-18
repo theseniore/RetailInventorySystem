@@ -15,6 +15,9 @@ public class AdminRole {
             EmployeeUser newEmployee = new EmployeeUser(employeeId, name, email, address, phoneNumber);
             database.insertRecord(newEmployee);
             database.saveToFile();
+            System.out.println("Employee added successfully!");
+        }else{
+            System.out.println("Employee already exists!");
         }
     }
 
@@ -28,6 +31,9 @@ public class AdminRole {
         if (database.contains(key)) {
             database.deleteRecord(key);
             database.saveToFile();
+            System.out.println("employee removed successfully");
+        }else{
+            System.out.println("employee not found");
         }
     }
 

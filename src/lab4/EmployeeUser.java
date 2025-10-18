@@ -16,6 +16,10 @@ public class EmployeeUser {
         this.Address = Address;
         this.PhoneNumber = phoneNumber;
     }
+    public EmployeeUser(String employeeId){
+        this.employeeId = employeeId;
+    }
+
     public String lineRepresentation(){
         return employeeId+","+Name+","+Email+","+Address+","+PhoneNumber;
     }

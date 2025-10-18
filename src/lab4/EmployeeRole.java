@@ -23,6 +23,9 @@ public class EmployeeRole {
                     supplierName, quantity, price);
             productsDatabase.insertRecord(newProduct);
             productsDatabase.saveToFile();
+            System.out.println("product added successfully!");
+        }else{
+            System.out.println("product id already exists");
         }
     }
 
@@ -90,6 +93,7 @@ public class EmployeeRole {
     }
 
     public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
+        //Error!!!!!!!!!!!!!!!!!!
         CustomerProduct[] allRecords = customerProductDatabase.returnAllRecords().toArray(new CustomerProduct[0]);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 

@@ -240,12 +240,18 @@ public class Menu {
                         break;
 
                     case 2:
-                        Product[] products = employee.getListOfProducts();
-                        System.out.println("list of Products:");
-                        for (Product p : products) {
-                            System.out.println(p.lineRepresentation());
-                        }
-                        break;
+
+                            Product[] products = employee.getListOfProducts();
+                            if(products.length !=0) {
+                                System.out.println("list of Products:");
+                                for (Product p : products) {
+                                    System.out.println(p.lineRepresentation());
+                                }
+                                break;
+                            }else{
+                                System.out.println("No Products Available.");
+                                break;
+                            }
 
                     case 3:
                         System.out.print("enter customer SSN: ");
@@ -267,16 +273,24 @@ public class Menu {
                         System.out.print("enter product ID to return: ");
                         String returnProductID = sc.nextLine();
                         CustomerProductDatabase t=new CustomerProductDatabase("CustomersProducts.txt");
-                        t.readFromFile();
-                        LocalDate purchaseDateReturn = t.getRecord(returnSSN).getPurchaseDate();
-                        LocalDate returnDate = LocalDate.now();
 
-                        double refunded = employee.returnProduct(returnSSN, returnProductID, purchaseDateReturn, returnDate);
-                        if (refunded >= 0)
-                            System.out.println("product returned successfully Refund: " + refunded);
-                        else
-                            System.out.println("Invalid return (check date or product).");
-                        break;
+                        try {
+                            t.readFromFile();
+                           LocalDate purchaseDateReturn = t.getRecord(returnSSN).getPurchaseDate();
+
+
+                            LocalDate returnDate = LocalDate.now();
+
+                            double refunded = employee.returnProduct(returnSSN, returnProductID, purchaseDateReturn, returnDate);
+                            if (refunded >= 0)
+                                System.out.println("product returned successfully Refund: " + refunded);
+                            else
+                                System.out.println("Invalid return (check date or product).");
+                            break;
+                        }catch (NullPointerException e){
+                            System.out.println("Invalid product ID!");
+                            break;
+                        }
 
                     case 5:
                         System.out.print("enter customer SSN: ");

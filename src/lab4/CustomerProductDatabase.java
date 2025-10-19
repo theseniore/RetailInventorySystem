@@ -35,6 +35,9 @@ public class CustomerProductDatabase implements Databases <CustomerProduct> {
             System.out.println("The file cannot be opened!");
             return;
         }
+        catch (Exception e){
+            System.out.println("The file is empty!");
+        }
     }
     public CustomerProduct createRecordFrom(String line)
     {

@@ -16,10 +16,17 @@ public class AdminRole {
             database.insertRecord(newEmployee);
             database.saveToFile();
             System.out.println("Employee added successfully!");
-        }else{
-            System.out.println("Employee already exists!");
         }
     }
+    public boolean addEmployee(String employeeeId) {
+        if(database.contains(employeeeId))
+        {
+            System.out.println("Employee already exists!");
+            return true;
+        }
+            return false;
+        }
+
 
     public EmployeeUser[] getListOfEmployees() {
 

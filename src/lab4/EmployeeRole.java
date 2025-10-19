@@ -28,6 +28,13 @@ public class EmployeeRole {
             System.out.println("product id already exists");
         }
     }
+    public boolean addProduct(String productId) {
+        if (productsDatabase.contains(productId)) {
+            System.out.println("product id already exists");
+            return true;
+        }
+        return false;
+    }
 
     public Product[] getListOfProducts() {
         return productsDatabase.returnAllRecords().toArray(new Product[0]);

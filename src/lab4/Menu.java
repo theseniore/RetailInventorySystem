@@ -19,8 +19,6 @@ public class Menu {
             System.out.println("===========================");
             System.out.println("enter your choice:");
             try {
-
-
             String choice = sc.nextLine();
             switch (Integer.parseInt(choice)){
             case 1: adminMenu();
@@ -33,7 +31,6 @@ public class Menu {
             default:
                 System.out.println("invalid number try again");
                 break;
-
             }}catch (NumberFormatException e){
                 System.out.println("invalid input please try to enter a number");
             }
@@ -43,7 +40,22 @@ public class Menu {
         boolean exit = false;
         AdminRole admin = new AdminRole();
         Scanner sc = new Scanner(System.in);
-
+        // The username is admin and password is admin
+        final String USERNAME = "admin";
+        final String PASSWORD = "admin";
+        do {
+            String usr,pswd;
+            System.out.print("enter employee username: ");
+            usr = sc.nextLine();
+            System.out.println("enter employee password: ");
+            pswd = sc.nextLine();
+            if(!(usr.equals(USERNAME)&&pswd.equals(PASSWORD)))
+            {
+                System.out.println("You've entered a wrong username or password! ");
+            }
+            else
+            break;
+        } while (true);
         while (!exit) {
             System.out.println("===========================");
             System.out.println("Welcome to Admin Menu");
@@ -60,13 +72,19 @@ public class Menu {
                 switch (Integer.parseInt(choice)) {
                     case 1:
                         String id, name, email, address, phone;
-
+                            boolean flag = false;
                         do {
                             System.out.print("enter employee ID: ");
                             id = sc.nextLine();
                             if (id.isEmpty()) System.out.println("Invalid ID try again.");
+                            if(admin.addEmployee(id))
+                            {
+                                flag = true;
+                                break;
+                            }
                         } while (id.isEmpty());
-
+                        if(flag)
+                            break;
                         do {
                             System.out.print("enter name: ");
                             name = sc.nextLine();
@@ -174,13 +192,19 @@ public class Menu {
                         String productID, productName, manufacturerName, supplierName;
                         int quantity;
                         float price;
-
+                        boolean flag = false;
                         do {
                             System.out.print("enter product ID: ");
                             productID = sc.nextLine();
                             if (productID.isEmpty()) System.out.println("Invalid ID try again.");
+                            else if(employee.addProduct(productID))
+                            {
+                                flag = true;
+                                break;
+                            }
                         } while (productID.isEmpty());
-
+                        if(flag)
+                            break;
                         do {
                             System.out.print("enter product name: ");
                             productName = sc.nextLine();

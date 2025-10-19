@@ -39,6 +39,7 @@ public class EmployeeRole {
 
     public boolean purchaseProduct(String customerSSN, String productID, LocalDate purchaseDate) {
         Product product = productsDatabase.getRecord(productID);
+
         if (product == null || product.getQuantity() == 0) {
             return false;
         }
@@ -58,20 +59,24 @@ public class EmployeeRole {
     }
 
     public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate, LocalDate returnDate) {
+        CustomerProduct t= customerProductDatabase.getRecord(customerSSN);
+
         // Check conditions for invalid return
         if (returnDate.isBefore(purchaseDate)) {
             return -1;
         }
-
+        // Invalid Product
         Product product = productsDatabase.getRecord(productID);
-        if (product == null) {
+        if (product == null||!t.getProductID().equals(productID)) {
             return -1;
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String searchKey = customerSSN + "," + productID + "," + purchaseDate.format(formatter);
-
-        if (!customerProductDatabase.contains(searchKey)) {
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+       // String searchKey = customerSSN + "," + productID + "," + purchaseDate.format(formatter);
+        if (!customerProductDatabase.contains(customerSSN)) {
+            return -1;
+        }
+        if(!t.isPaid()){
             return -1;
         }
 
@@ -83,7 +88,7 @@ public class EmployeeRole {
 
         // Process return
         product.setQuantity(product.getQuantity() + 1);
-        customerProductDatabase.deleteRecord(searchKey);
+        customerProductDatabase.deleteRecord(customerSSN);
 
         // Save changes
         productsDatabase.saveToFile();
@@ -93,7 +98,7 @@ public class EmployeeRole {
     }
 
     public boolean applyPayment(String customerSSN, LocalDate purchaseDate) {
-        //Error!!!!!!!!!!!!!!!!!!
+
         CustomerProduct[] allRecords = customerProductDatabase.returnAllRecords().toArray(new CustomerProduct[0]);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 

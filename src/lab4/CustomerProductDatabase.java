@@ -51,7 +51,7 @@ public class CustomerProductDatabase implements Databases <CustomerProduct> {
     }
     public ArrayList<CustomerProduct> returnAllRecords()
     {
-        return this.records==null?this.records:null;
+        return this.records==null?new ArrayList<>():this.records;
     }
     public boolean contains(String key )
     {

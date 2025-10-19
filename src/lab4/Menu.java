@@ -242,7 +242,9 @@ public class Menu {
                         String returnSSN = sc.nextLine();
                         System.out.print("enter product ID to return: ");
                         String returnProductID = sc.nextLine();
-                        LocalDate purchaseDateReturn = LocalDate.now();
+                        CustomerProductDatabase t=new CustomerProductDatabase("CustomersProducts.txt");
+                        t.readFromFile();
+                        LocalDate purchaseDateReturn = t.getRecord(returnSSN).getPurchaseDate();
                         LocalDate returnDate = LocalDate.now();
 
                         double refunded = employee.returnProduct(returnSSN, returnProductID, purchaseDateReturn, returnDate);

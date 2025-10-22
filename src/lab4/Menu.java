@@ -2,7 +2,6 @@ package lab4;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-
 public class Menu {
     public static void mainMenu()
     {

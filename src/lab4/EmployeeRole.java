@@ -123,6 +123,7 @@ public class EmployeeRole {
         return false;
     }
 
+    
     public void logout() {
         productsDatabase.saveToFile();
         customerProductDatabase.saveToFile();
